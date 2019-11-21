@@ -1,0 +1,13 @@
+note over browser:
+When the text is sent over the form to the server
+the spa.js event handler adds what was typed
+inside a list which then is added to the unordered 
+list shown on the page so the user can see it.
+end note
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa \n "Content-Type: application/json" \n "body: {content: "testing for exercise 0.6", date: "2019-11-21T08:00:05.556Z"}"
+note over server:
+The server adds the content the browser sent to it's
+list of talks and when everything is successful. tells
+the browser the request was handled without issues
+end note
+server-->browser: HTTP/1.1 201 Created \n "Content-Type: application/json" \n "body:{"message":"note created"}"

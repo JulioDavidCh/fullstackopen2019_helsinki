@@ -1,0 +1,31 @@
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server-->browser: HTML-code
+note over browser:
+the browser loads the HTML code which force it 
+to make 2 more get requests for to get the two
+files inside its head tag:
+<link rel="stylesheet" type="text/css" href="/main.css" />
+<script type="text/javascript" src="spa.js"></script>
+a get request to the path "/main.css" and another one
+to "spa.js"
+end note
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+note over browser:
+The browser loads the css files and its html code
+is styled
+end note
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server-->browser: spa.js
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
