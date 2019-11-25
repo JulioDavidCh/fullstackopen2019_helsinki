@@ -9,18 +9,23 @@ const Button = (props) => (
 
 const Header = ({ text }) => <h1>{text}</h1>
 
+const ComponentMaker = ({ name, value }) =>{
+  return(
+    <tr><td>{name}</td> <td>{value}</td></tr>
+  )
+}
+
 const StatisticalTable = ({ good, neutral, bad, all }) =>{
-  let componentMaker = (name, value) => <tr><td>{name}</td> <td>{value}</td></tr>
-  let average = ((good-bad)/(all == 0? 1 : all) * 100).toFixed(1)
-  let positive = ((good)/(all == 0? 1 : all) * 100).toFixed(1)
+  const average = ((good-bad)/(all == 0? 1 : all) * 100).toFixed(1)
+  const positive = ((good)/(all == 0? 1 : all) * 100).toFixed(1)
   return (
     <table>
-        {componentMaker("good", good)}
-        {componentMaker("neutral", neutral)}
-        {componentMaker("bad", bad)}
-        {componentMaker("all", all)}
-        {componentMaker("average", average)}
-        {componentMaker("positive", positive + "%")}
+      <ComponentMaker name={"good"} value={good} />
+      <ComponentMaker name={"neutral"} value={neutral} />
+      <ComponentMaker name={"bad"} value={bad} />
+      <ComponentMaker name={"all"} value={all} />
+      <ComponentMaker name={"average"} value={average} />
+      <ComponentMaker name={"positive"} value={positive + "%"} />
     </table>
   )
 }
