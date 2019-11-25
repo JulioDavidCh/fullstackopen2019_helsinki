@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 
-const constructor = (header, parts) =>{
+const Constructor = ({header, courseParts}) =>{
   let head = [<h1> {header}  </h1>];
-  let body = parts.map(part => <p> {part.name + ' ' + part.exercises} </p>);
-  let total = <p> Number of exercises {parts.reduce((result, next) => result + next.exercises, 0)} </p>
+  let body = courseParts.map(part => <p> {part.name + ' ' + part.exercises} </p>);
+  let total = <p> Number of exercises {courseParts.reduce((result, next) => result + next.exercises, 0)} </p>
   let result = head.concat(body, total);
   return result;
 }
@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <div>
-      {constructor(course, parts)}
+      <Constructor header={course} courseParts={parts} />
     </div>
   )
 }
